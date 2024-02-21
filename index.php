@@ -2,13 +2,23 @@
 // Label pagina
 $page_label = 'PHP Strong Password Generator';
 
-
-
 // Controllo per gestire il default value dell'input
 // * SE c'è qualcosa in GET restituiscimelo altrimenti restituisci 'NULL'
 $psw_length = $_GET['psw-length'] ?? NULL;
 
-// var_dump($psw_length);
+// Creo una striga contenente tutte le lettere dell'alfabeto maiuscole e minuscole
+$letters = 'a b c d e f g h i l m n o p q r s t u v z A B C D E F G H I L M N O P Q R S T U V Z';
+
+// Creo una stringa contenente i numeri da 0 a 9
+$numbers = '0 1 2 3 4 5 6 7 8 9';
+
+// Creo una stringa contenente i simboli
+$symbols = "! \" # $ % & ' ( ) * +  - . / : ; < = > ? @ [ \ ] ^ _` { | }";
+
+// Creo un array unico con tutte le lettere, i numeri e i simboli
+$string = "$letters $numbers $symbols";
+$arr_char = explode(" ", $string);
+var_dump($arr_char);
 
 ?>
 
@@ -51,8 +61,11 @@ $psw_length = $_GET['psw-length'] ?? NULL;
                 <form action="">
                     <div class="psw-length">
                         <label for="length" class="form-label m-0">Lunghezza password:</label>
-                        <input type="number" min="1" class="form-control" id="length" placeholder="Numero caratteri"
-                            name="psw-length" value="<?= $psw_length ?? 1 ?>">
+                        <input type="number" min="8" max="32" class="form-control" id="length"
+                            placeholder="Numero caratteri" name="psw-length" value="<?= $psw_length ?? 8 ?>">
+                        <span id="passwordHelpInline" class="form-text">
+                            Must be 8-32 characters long
+                        </span>
                     </div>
                     <button class="btn btn-secondary">Crea</button>
                     <a href="index.php" class="btn btn-warning">Annulla</a>
