@@ -1,0 +1,14 @@
+section {
+    margin: 24px 0;
+}
+
+.psw-length {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 16px 0;
+}
+
+.form-control {
+    flex-basis: 30%;
+}
