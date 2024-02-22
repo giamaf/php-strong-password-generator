@@ -38,24 +38,18 @@ if($psw_length === NULL){
 }else if($psw_length === ''){
     $class = 'alert-warning';
     $message = "Inserire un numero di caratteri compreso tra $min_char e $max_char per generare una password 👇🏼";
-}else if($psw_length < 8){
-    $class = 'alert-warning';
-    $message = "Il numero minimo di caratteri è <strong>$min_char</strong>";
-}else if ($psw_length > 32) {
-    $class = 'alert-warning';
-    $message = "Il numero massimo di caratteri è <strong>$max_char</strong>";
 }else{
     $password = generate_password($psw_length, $arr_char);
-    // var_dump($password); 
+    var_dump($password); 
     $class = 'alert-success';
     $message = "La tua password è: <strong>$password</strong>";
 }
 
 // # Funzione per generare una password con lunghezza scelta dall'utente
 
-function generate_password($length, $characters){
+function generate_password($length, $characters) {
     //* Imposto la variabile password come stringa vuota
-    $password_array = [];
+    $password = '';
 
     //* Calcolo la lunghezza dell'array per la funzione random poiché accetta min(0) e max
     $characters_length = count($characters);
@@ -63,15 +57,13 @@ function generate_password($length, $characters){
     //* Imposto la lunghezza massima dell'array password ($password_array)
     $length = min($length, $characters_length);
 
+    //* Mescolo l'array dei caratteri per rendere l'estrazione casuale
+    shuffle($characters);
+
     //* Giro sull'array dei caratteri tante volte quante scelte dall'utente
-    for($i = 0; $i < $length; $i++){
-        //* Carattere estratto ad ogni giro
-        $current_char = $characters[rand(0, $characters_length -1 )];
-        
-        //* Inserisci il carattere estratto ad ogni giro nell'array password SE NON è già presente 
-        if(!in_array($current_char, $password_array)){
-            $password_array[] = $current_char;
-        }
+    for ($i = 0; $i < $length; $i++) {
+        $password .= $characters[$i];
     }
-    return implode("", $password_array);
+
+    return $password;
 }

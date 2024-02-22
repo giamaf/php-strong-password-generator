@@ -15,7 +15,7 @@ require __DIR__ . '/includes/logic/functions.php';
         integrity='sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=='
         crossorigin='anonymous' />
 
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css">
 
     <title><?= $page_label ?></title>
 </head>

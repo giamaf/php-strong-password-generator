@@ -9,8 +9,8 @@
                     <?= $label_password_field ?>
                 </span>
             </div>
-            <button class="btn btn-secondary">Crea</button>
-            <a href="index.php" class="btn btn-warning">Azzera</a>
+            <button class="btn btn-secondary">Genera</button>
+            <a href="index.php" class="btn btn-warning">Reset</a>
         </form>
     </div>
 </section>
