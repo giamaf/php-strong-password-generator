@@ -1,6 +1,17 @@
 <?php
+// Label pagina
+$page_label = 'PHP Strong Password Generator';
+
+// Valore di caratteri massimo e minimo 
+$min_char = 8;
+$max_char = 32;
+
+// Label campo password
+$label_password_field = "Must be $min_char-$max_char characters long";
+
 // # LOGICA
 require __DIR__ . '/includes/logic/functions.php';
+
 ?>
 
 <!DOCTYPE html>

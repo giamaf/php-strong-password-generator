@@ -12,3 +12,8 @@ section {
 .form-control {
     flex-basis: 30%;
 }
+
+.form-check-input:hover {
+    cursor: pointer;
+    border: 1px solid white;
+}
