@@ -1,6 +1,6 @@
 <?php 
 // # Funzione per crerare uno stringone di caratteri
-function set_characters()
+function set_characters($allowed_characters)
 {
     // Creo una striga contenente tutte le lettere dell'alfabeto minuscole
     $letters_low = 'abcdefghijklmnopqrstuvwxyz';
@@ -14,8 +14,10 @@ function set_characters()
     // Creo una stringa contenente i simboli
     $symbols = "!\"#$%&'()*+-./:;=?@[\]^_`{|}";
 
-    //! Creo uno stringone unico con tutte le lettere, i numeri e i simboli
-    $characters = $letters_low . $letters_up . $numbers . $symbols;
+    $characters = '';
+    if(in_array('L', $allowed_characters)) $characters .= $letters_low . $letters_up;
+    if(in_array('N', $allowed_characters)) $characters .= $numbers;
+    if(in_array('S', $allowed_characters)) $characters .= $symbols;
 
     return $characters;
 }

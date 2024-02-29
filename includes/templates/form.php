@@ -24,7 +24,8 @@
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="duplicates" id="no-duplicates" value="0">
+                        <input class="form-check-input" type="radio" name="duplicates" id="no-duplicates" value="0"
+                            checked>
                         <label class="form-check-label" for="no-duplicates">
                             No
                         </label>
@@ -35,20 +36,23 @@
             <!-- Elementi da includere -->
             <div class="form-options my-3">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
-                    <label class="form-check-label" for="flexCheckDefault">
+                    <input class="form-check-input" type="checkbox" name="characters[]" value="L" id="letters"
+                        <?= $letters_checked ?>>
+                    <label class="form-check-label" for="letters">
                         Lettere
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                    <label class="form-check-label" for="flexCheckChecked">
+                    <input class="form-check-input" type="checkbox" name="characters[]" value="N" id="numbers"
+                        <?= $numbers_checked ?>>
+                    <label class="form-check-label" for="numbers">
                         Numeri
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                    <label class="form-check-label" for="flexCheckChecked">
+                    <input class="form-check-input" type="checkbox" name="characters[]" value="S" id="symbols"
+                        <?= $symbols_checked ?>>
+                    <label class="form-check-label" for="symbols">
                         Simboli
                     </label>
                 </div>

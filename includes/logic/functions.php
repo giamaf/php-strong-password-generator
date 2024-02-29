@@ -9,28 +9,32 @@ if($psw_length){
     $duplicates_allowed = $_GET['duplicates'] || false;
 }
 
+// Controllo i caratteri ammessi (lettere, numeri, simboli)
+$allowed_characters = $_GET['characters'] ?? [];
+
 // Controllo del valore
 if(!isset($psw_length)){
     // Se non vengono inseriti valori allora avremo
     $class = 'alert-secondary';
     $message = "👉🏼 Qui visualizzarai la tua password 👈🏼";
-}else if(empty($psw_length)){
+}else if(empty($psw_length) || empty($allowed_characters)){
     $class = 'alert-warning';
     $message = "Inserire un numero di caratteri compreso tra $min_char e $max_char per generare una password 👇🏼";
 }else{
-    $password = generate_password($psw_length, $duplicates_allowed);
+    $password = generate_password($psw_length, $duplicates_allowed, $allowed_characters);
     $class = 'alert-success';
     $message = "La tua password è: <b>$password</b>";
     var_dump($password);
 }
 
 // # Funzione per generare una password con lunghezza scelta dall'utente
-function generate_password($length, $duplicates_allowed) {
+function generate_password($length, $duplicates_allowed, $allowed_characters) {
+
     //* Imposto la variabile password come stringa vuota
     $password = '';
 
     //* Creo i possibili caratteri
-    $arr_char = set_characters();
+    $arr_char = set_characters($allowed_characters);
 
     //* Calcolo la lunghezza dell'array per la funzione random poiché accetta min(0) e max
     $characters_length = mb_strlen($arr_char);
@@ -45,8 +49,12 @@ function generate_password($length, $duplicates_allowed) {
         // Prendo un carattere a caso tra quelli disponibili
         $random_character = $arr_char[rand(0, $characters_length -1)];
 
-        // Concateno la stringa password
-        $password .= $random_character;
+        
+        if($duplicates_allowed || !str_contains($password, $random_character)){
+
+            // Concateno la stringa password
+            $password .= $random_character;
+        }
     }
 
      return $password;

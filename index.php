@@ -9,6 +9,11 @@ $max_char = 32;
 // Label campo password
 $label_password_field = "Must be $min_char-$max_char characters long";
 
+// Mantengo la spunta della selezione dopo aver generato la password
+$letters_checked = isset($_GET['characters']) && in_array('L', $_GET['characters']) ? 'checked' : 'checked';
+$numbers_checked = isset($_GET['characters']) && in_array('N', $_GET['characters']) ? 'checked' : '';
+$symbols_checked = isset($_GET['characters']) && in_array('S', $_GET['characters']) ? 'checked' : '';
+
 // # LOGICA
 require __DIR__ . '/includes/logic/functions.php';
 
