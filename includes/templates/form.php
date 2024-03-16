@@ -1,66 +1,65 @@
-<section id="psw-form">
-    <div class="container">
-        <form action="">
+<section class="form-password">
+    <form>
 
-            <!-- Lunghezza Password -->
-            <div class="psw-length">
-                <label for="length" class="form-label m-0">Lunghezza password:</label>
-                <input type="number" class="form-control" min="<?= $min_char ?>" max="<?= $max_char ?>" id="length"
-                    placeholder="Numero caratteri" name="psw-length" value="<?= $psw_length ?? NULL ?>">
-                <span id="passwordHelpInline" class="form-text">
-                    <?= $label_password_field ?>
-                </span>
+        <!-- Psw length -->
+        <div class="my-sm-3">
+            <label for="length" class="form-label m-0">Password length:</label>
+            <input style="width: 200px" type="number" class="form-control my-2 <?= $input_class ?>"
+                min="<?= $min_char ?>" max="<?= $max_char ?>" id="length" name="psw-length"
+                value="<?= $psw_length ?? NULL ?>">
+            <div class="form-text <?= $suggest_class ?>">
+                <p class="small"><?= $label_password_field ?></p>
             </div>
+        </div>
 
-            <!-- Ripetizione caratteri -->
-            <fieldset class="row">
-                <legend class="col-form-label col-sm-3">Consenti ripetizioni di uno o più caratteri</legend>
-                <div class="col-sm-5">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="duplicates" id="duplicates" value="1"
-                            checked>
-                        <label class="form-check-label" for="duplicates">
-                            Si
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="duplicates" id="no-duplicates" value="0"
-                            checked>
-                        <label class="form-check-label" for="no-duplicates">
-                            No
-                        </label>
-                    </div>
-                </div>
-            </fieldset>
+        <!-- Parameters choice -->
+        <div class=" form-options my-3">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="characters[]" value="L" id="letters"
+                    <?= $letters_checked ?>>
+                <label class="form-check-label" for="letters">
+                    Letters
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="characters[]" value="N" id="numbers"
+                    <?= $numbers_checked ?>>
+                <label class="form-check-label" for="numbers">
+                    Numbers
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="characters[]" value="S" id="symbols"
+                    <?= $symbols_checked ?>>
+                <label class="form-check-label" for="symbols">
+                    Symbols
+                </label>
+            </div>
+        </div>
 
-            <!-- Elementi da includere -->
-            <div class="form-options my-3">
+        <!-- Char rep -->
+        <fieldset class="row">
+            <legend class="col-form-label col">Allow characters reps:</legend>
+            <div class="col-12 ">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="characters[]" value="L" id="letters"
-                        <?= $letters_checked ?>>
-                    <label class="form-check-label" for="letters">
-                        Lettere
+                    <input class="form-check-input" type="radio" name="duplicates" id="duplicates" value="1" checked>
+                    <label class="form-check-label" for="duplicates">
+                        Yes
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="characters[]" value="N" id="numbers"
-                        <?= $numbers_checked ?>>
-                    <label class="form-check-label" for="numbers">
-                        Numeri
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="characters[]" value="S" id="symbols"
-                        <?= $symbols_checked ?>>
-                    <label class="form-check-label" for="symbols">
-                        Simboli
+                    <input class="form-check-input" type="radio" name="duplicates" id="no-duplicates" value="0" checked>
+                    <label class="form-check-label" for="no-duplicates">
+                        No
                     </label>
                 </div>
             </div>
+        </fieldset>
 
-            <!-- Tasti -->
-            <button class="btn btn-secondary">Genera</button>
-            <a href="index.php" class="btn btn-warning">Reset</a>
-        </form>
-    </div>
+        <!-- Buttons -->
+        <div class="buttons my-3">
+            <button class="btn btn-secondary">Generate</button>
+            <a class="btn btn-warning" href="index.php">Reset</a>
+        </div>
+    </form>
 </section>

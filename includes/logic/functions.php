@@ -12,19 +12,24 @@ if($psw_length){
 // Controllo i caratteri ammessi (lettere, numeri, simboli)
 $allowed_characters = $_GET['characters'] ?? [];
 
+$input_class = '';
+$suggest_class = '';
+
 // Controllo del valore
 if(!isset($psw_length)){
     // Se non vengono inseriti valori allora avremo
     $class = 'alert-secondary';
-    $message = "👉🏼 Qui visualizzarai la tua password 👈🏼";
+    $message = "👉🏼 Password here 👈🏼";
 }else if(empty($psw_length) || empty($allowed_characters)){
-    $class = 'alert-warning';
-    $message = "Inserire un numero di caratteri compreso tra $min_char e $max_char per generare una password 👇🏼";
+    $class = 'alert-danger';
+    $input_class = 'is-invalid';
+    $suggest_class = 'invalid-feedback';
+    $message = "Invalid password length ⚠️";
 }else{
     $password = generate_password($psw_length, $duplicates_allowed, $allowed_characters);
     $class = 'alert-success';
-    $message = "La tua password è: <b>$password</b>";
-    var_dump($password);
+    $message = $password;
+    // var_dump($password);
 }
 
 // # Funzione per generare una password con lunghezza scelta dall'utente

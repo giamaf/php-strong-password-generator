@@ -1,11 +1,7 @@
 <?php
-$main_title = 'Strong Password Generator';
-$secondary_title = 'Genera una password sicura';
+$main_title = 'Password Generator';
 ?>
 
-<header>
-    <div class="container my-4 text-center">
-        <h1><?= $main_title ?></h1>
-        <h4><?= $secondary_title ?></h4>
-    </div>
+<header class="text-center mb-3">
+    <h3><?= $main_title ?></h3>
 </header>
